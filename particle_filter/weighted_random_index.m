@@ -12,7 +12,7 @@ function [indices, values] = weighted_random_index(data, num_samples, weights)
 %
 %   Example:
 %
-%   Copyright 2015 Michael J. Prerau, Ph.D. (based on randsamp)
+%   Copyright 2024 Michael J. Prerau, Ph.D. (based on randsamp)
 %
 %   Last modified 10/01/2015
 %********************************************************************

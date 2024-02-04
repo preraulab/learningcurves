@@ -45,7 +45,7 @@
 %     %Compute smoother
 %     binary_learningcurve_pfilter_ptile(times, data);
 %
-%   Copyright 2013 Michael J. Prerau, Ph.D.
+%   Copyright 2024 Michael J. Prerau, Ph.D.
 %
 %   Last modified 12/02/2015
 %********************************************************************

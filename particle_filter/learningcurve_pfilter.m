@@ -50,7 +50,7 @@
 %     %Compute smoother
 %     learningcurve_pfilter(times, data);
 %
-%   Copyright 2013 Michael J. Prerau, Ph.D.
+%   Copyright 2024 Michael J. Prerau, Ph.D.
 %
 %   Last modified 1/07/2013
 %********************************************************************
