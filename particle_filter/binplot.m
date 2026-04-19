@@ -14,7 +14,6 @@
 %   See also: stem, learningcurve_pfilter
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 function binplot(varargin)
 

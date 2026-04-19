@@ -38,7 +38,6 @@ function [alph, beta, gamma, rho, sig2e, sig2v, xnew, signewsq, muone, a] = mixe
 %   See also: mixedlearningcurve2, recfilter, backest, m_step
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 stats = [];
 xfilt=[];

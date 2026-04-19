@@ -35,7 +35,6 @@
 %   See also: learningcurve_pfilter, learningcurve_pfilter_ptile, weighted_random_index
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 function [param_ests, particles]=binary_learningcurve_pfilter_ptile(times, data, num_particles, smoother, prog_bar, plot_on)
 %Generate simulated data if no inputs

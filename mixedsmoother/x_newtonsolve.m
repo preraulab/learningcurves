@@ -27,7 +27,6 @@ function [xres, timefail] = x_newtonsolve(muone, xold, sig2old, cornum, z, alpha
 %   See also: recfilter, newtonsolve, mixedlearningcurve
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 timefail = 1; %time when the algorithm fails
 

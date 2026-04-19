@@ -22,7 +22,6 @@ function [x, timefail] = newtonsolve(mu,  xold, sigoldsq, N, Nmax);
 %   See also: forwardfilter, x_newtonsolve
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 it(1) = xold + sigoldsq*(N - Nmax*exp(mu)*exp(xold)/(1 ...
                                   + exp(mu)*exp(xold)));

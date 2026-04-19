@@ -24,7 +24,6 @@ function [p05, p95, pmid, pmode, pmatrix] = binpdistn(q, s, muone, background_pr
 %   See also: pdistn, xdistn, rdistn
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 
 pmatrix = [];

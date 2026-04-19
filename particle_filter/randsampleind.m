@@ -50,7 +50,6 @@ function [y,  ind]= randsampleind(n, k, varargin)
 %   separated from the repository.
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 ind=[];
 nargs = nargin;

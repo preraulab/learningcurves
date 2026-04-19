@@ -25,7 +25,6 @@ function [r025, r975, rmid, rmode, rmatrix] = xdistn(x, s, background_prob, alph
 %   See also: rdistn, binpdistn, pdistn
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 
 rmatrix = [];

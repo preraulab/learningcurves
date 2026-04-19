@@ -18,7 +18,6 @@ function [xnew, signewsq, a] = backest(x, xold, sigsq, sigsqold);
 %   See also: recfilter, m_step, mixedlearningcurve
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 T = size(x,2);
 a=0;

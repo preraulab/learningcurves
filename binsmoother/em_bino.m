@@ -25,7 +25,6 @@ function [newsigsq] = em_bino(I, xnew, signewsq, A, startflag);
 %   See also: binsmoother, backwardfilter, m_step
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 M           = size(xnew,2);
 

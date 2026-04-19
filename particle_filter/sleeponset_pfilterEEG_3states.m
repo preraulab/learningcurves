@@ -15,4 +15,3 @@
 %   See also: learningcurve_pfilter, learningcurve_pfilter_ptile
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main

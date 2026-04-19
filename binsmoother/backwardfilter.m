@@ -21,7 +21,6 @@ function [xnew, signewsq, A] = backwardfilter(x, xold, sigsq, sigsqold);
 %   See also: forwardfilter, em_bino, binsmoother
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 T = size(x,2);
 

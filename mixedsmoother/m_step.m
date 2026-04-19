@@ -34,7 +34,6 @@ function  [alph, beta, gamma, rho, sig2e, sig2v, xnew, muone] ...
 %   See also: em_bino, mixedlearningcurve, mixedlearningcurve2
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 
 K = length(N);

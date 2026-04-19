@@ -28,7 +28,6 @@ function  [p, xhat, sigsq, xhatold, sigsqold] ...
 %   See also: backwardfilter, newtonsolve, binsmoother
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 K = size(I,2);
 N = I(1,:);

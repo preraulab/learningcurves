@@ -21,7 +21,6 @@
 %   See also: randsampleind, histc
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 function [indices, values] = weighted_random_index(data, num_samples, weights)
 

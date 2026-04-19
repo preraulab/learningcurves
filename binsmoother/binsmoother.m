@@ -29,7 +29,6 @@ function [p05, p95, pmid, pmode, pmatrix, xnew, signewsq]=binsmoother(Responses,
 %   See also: forwardfilter, backwardfilter, em_bino, pdistn
 %
 %   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
-%        Source: https://github.com/preraulab/labcode_main
 
 MaxResponse=max(Responses);
 UpdaterFlag = 2;  %default allows bias
