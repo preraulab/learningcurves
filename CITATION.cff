@@ -1,0 +1,70 @@
+cff-version: 1.2.0
+message: "If you use this software, please also cite the associated paper (see preferred-citation)."
+title: "learningcurves"
+abstract: "State-space and particle-filter learning-curve estimators for binary and continuous behavioral measures."
+authors:
+  - family-names: Prerau
+    given-names: Michael J.
+    name-suffix: Ph.D.
+    affiliation: "Prerau Laboratory, Brigham and Women's Hospital, Harvard Medical School"
+    orcid: "https://orcid.org/0000-0002-9010-5273"
+type: software
+license: BSD-3-Clause
+url: "https://github.com/preraulab/learningcurves"
+repository-code: "https://github.com/preraulab/learningcurves"
+preferred-citation:
+  type: article
+  title: "Characterizing learning by simultaneous analysis of continuous and binary measures of performance"
+  authors:
+    - family-names: Prerau
+      given-names: Michael J.
+      orcid: "https://orcid.org/0000-0002-9010-5273"
+    - family-names: Smith
+      given-names: Anne C.
+    - family-names: Eden
+      given-names: Uri T.
+      orcid: "https://orcid.org/0000-0002-2058-3691"
+    - family-names: Kubota
+      given-names: Yasuo
+    - family-names: Yanike
+      given-names: Marianna
+    - family-names: Suzuki
+      given-names: Wendy A.
+    - family-names: Graybiel
+      given-names: Ann M.
+    - family-names: Brown
+      given-names: Emery N.
+  journal: "Journal of Neurophysiology"
+  volume: 102
+  issue: 5
+  start: 3060
+  end: 3072
+  year: 2009
+  month: 11
+  doi: "10.1152/jn.91251.2008"
+references:
+  - type: article
+    title: "A mixed filter algorithm for cognitive state estimation from simultaneously recorded continuous and binary measures of performance"
+    authors:
+      - family-names: Prerau
+        given-names: Michael J.
+        orcid: "https://orcid.org/0000-0002-9010-5273"
+      - family-names: Smith
+        given-names: Anne C.
+      - family-names: Eden
+        given-names: Uri T.
+        orcid: "https://orcid.org/0000-0002-2058-3691"
+      - family-names: Yanike
+        given-names: Marianna
+      - family-names: Suzuki
+        given-names: Wendy A.
+      - family-names: Brown
+        given-names: Emery N.
+    journal: "Biological Cybernetics"
+    volume: 99
+    issue: 1
+    start: 1
+    end: 14
+    year: 2008
+    month: 7
+    doi: "10.1007/s00422-008-0227-z"
