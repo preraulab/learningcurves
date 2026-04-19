@@ -1,10 +1,14 @@
+---
+hide-toc: false
+---
+
 # learningcurves
 
-MATLAB utilities from the Michael J. Prerau Laboratory.
+```{include} ../README.md
+:start-line: 1
+```
 
-This repository is part of the Prerau Lab MATLAB codebase. See the source tree for function-level documentation.
-
-## API Reference
+## Reference
 
 ```{toctree}
 :maxdepth: 2
