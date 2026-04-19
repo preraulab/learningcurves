@@ -1,46 +1,47 @@
 API Reference
 =============
 
-Auto-generated reference for ``learningcurves``.
-
 binsmoother
 -----------
 
-.. mat:module:: binsmoother
+.. toctree::
+   :maxdepth: 1
 
-.. mat:autofunction:: backwardfilter
-.. mat:autofunction:: binsmoother
-.. mat:autofunction:: em_bino
-.. mat:autofunction:: forwardfilter
-.. mat:autofunction:: newtonsolve
-.. mat:autofunction:: pdistn
+   api/backwardfilter
+   api/binsmoother
+   api/em_bino
+   api/forwardfilter
+   api/newtonsolve
+   api/pdistn
 
 mixedsmoother
 -------------
 
-.. mat:module:: mixedsmoother
+.. toctree::
+   :maxdepth: 1
 
-.. mat:autofunction:: backest
-.. mat:autofunction:: binpdistn
-.. mat:autofunction:: m_step
-.. mat:autofunction:: mixedlearningcurve
-.. mat:autofunction:: mixedlearningcurve2
-.. mat:autofunction:: rdistn
-.. mat:autofunction:: recfilter
-.. mat:autofunction:: x_newtonsolve
-.. mat:autofunction:: xdistn
+   api/backest
+   api/binpdistn
+   api/m_step
+   api/mixedlearningcurve
+   api/mixedlearningcurve2
+   api/rdistn
+   api/recfilter
+   api/x_newtonsolve
+   api/xdistn
 
 particle_filter
 ---------------
 
-.. mat:module:: particle_filter
+.. toctree::
+   :maxdepth: 1
 
-.. mat:autofunction:: binary_learningcurve_pfilter_ptile
-.. mat:autofunction:: binplot
-.. mat:autofunction:: learningcurve_pfilter
-.. mat:autofunction:: learningcurve_pfilter_ptile
-.. mat:autofunction:: learningcurve_pfilter_ptile_bino_only
-.. mat:autofunction:: randsampleind
-.. mat:autofunction:: sleeponset_pfilterEEG_3states
-.. mat:autofunction:: weighted_random_index
+   api/binary_learningcurve_pfilter_ptile
+   api/binplot
+   api/learningcurve_pfilter
+   api/learningcurve_pfilter_ptile
+   api/learningcurve_pfilter_ptile_bino_only
+   api/randsampleind
+   api/sleeponset_pfilterEEG_3states
+   api/weighted_random_index
 
