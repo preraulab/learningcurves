@@ -43,6 +43,14 @@ function [y,  ind]= randsampleind(n, k, varargin)
 
 %   Copyright 1993-2010 The MathWorks, Inc.
 %   $Revision: 1.1.8.5 $  $Date: 2011/05/09 01:26:38 $
+%
+%   Third-party function (adapted from MATLAB Statistics Toolbox RANDSAMPLE)
+%   vendored here to additionally return sample indices. Header preserved
+%   verbatim; banner below added only to trace provenance if this file is
+%   separated from the repository.
+%
+%   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
+%        Source: https://github.com/preraulab/labcode_main
 
 ind=[];
 nargs = nargin;

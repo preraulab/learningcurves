@@ -1,5 +1,40 @@
 function  [alph, beta, gamma, rho, sig2e, sig2v, xnew, muone] ...
     = m_step(N, Z, signewsq, xnew, a, muone, startflag, binflag)
+%M_STEP  EM maximization step for the mixed binary/continuous learning-curve model
+%
+%   Usage:
+%       [alph, beta, gamma, rho, sig2e, sig2v, xnew, muone] = ...
+%           m_step(N, Z, signewsq, xnew, a, muone, startflag, binflag)
+%
+%   Inputs:
+%       N        : 1xK double - binary/count observations per trial -- required
+%       Z        : 1xK double - continuous observations (e.g. RT) -- required
+%       signewsq : 1xK+1 double - smoothed state variance SIG^2{k|K} -- required
+%       xnew     : 1xK+1 double - smoothed state estimate x{k|K} -- required
+%       a        : 1xK+1 double - smoother gain A{k} -- required
+%       muone    : double - logit of background probability (pass-through) -- required
+%       startflag: integer - initial-condition rule (0: fixed, 2: estimated) -- required
+%       binflag  : logical - if true, suppress RT model (force alpha=beta=0) -- required
+%
+%   Outputs:
+%       alph     : double - updated RT intercept
+%       beta     : double - updated RT slope
+%       gamma    : double - binary observation state weight (fixed to 1)
+%       rho      : double - state AR(1) coefficient (fixed to 1)
+%       sig2e    : double - updated RT noise variance
+%       sig2v    : double - updated state variance
+%       xnew     : 1xK+1 double - smoothed state (passed through)
+%       muone    : double - logit of background probability (passed through)
+%
+%   Notes:
+%       Implements the closed-form M-step updates using sufficient statistics
+%       W{k|K}, W{k-1|K}, W{k,k-1|K}. Sensitive to the initial-condition
+%       specification via startflag. gamma and rho are held fixed.
+%
+%   See also: em_bino, mixedlearningcurve, mixedlearningcurve2
+%
+%   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
+%        Source: https://github.com/preraulab/labcode_main
 
 
 K = length(N);

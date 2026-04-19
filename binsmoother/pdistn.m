@@ -1,35 +1,40 @@
 function [p05, p95, pmid, pmode, pmatrix] = pdistn(x, s, mu, background_prob);
-%pdist is a helper function that calculates the confidence limits of the EM
-%estimate of the learning state process.  For each trial, the function
-%constructs the probability density for a correct response.  It then builds
-%the cumulative density function from this and computes the p values of
-%the confidence limits
+%PDISTN  Confidence limits for p(correct) under the binary observation model
 %
-%variables:
-%   xx(ov)   EM estimate of learning state process
-%   ss(ov)   EM estimate of learning state process variance
-%   pmatrix  vector of the level of certainty the ideal observer has that performance is better than chance at each trial  
-%   dels     bin size of the probability density p values
-%   pr       bins of the probability density distribution
-%   fp       p{k|j}, probability density of the probability of a correct response at trial k     (equation B.3)*
-%   pdf      probability density function      
-%   sumpdf   cumulative density function of the pdf
-%   lowlimit index of the p value that gives the lower 95% confidence
-%            bound
-%   highlimit   index of the p value that gives the upper 95% confidence
-%               bound
-%   middlimit   index of the p value that gives the 
-%   p05      the p value that gives the lower 95% confidence bound
-%   p95      the p value that gives the upper 95% confidence bound
-%   pmid     the p value that gives the 50% confidence bound
-%   pmode    the p value that gives the highest probability density
+%   Usage:
+%       [p05, p95, pmid, pmode, pmatrix] = pdistn(x, s, mu, background_prob)
+%
+%   Inputs:
+%       x               : 1xK double - smoothed state estimate x{k|K} -- required
+%       s               : 1xK double - smoothed state variance SIG^2{k|K} -- required
+%       mu              : double - logit of background (chance) probability -- required
+%       background_prob : double - chance-level probability used to index pmatrix -- required
+%
+%   Outputs:
+%       p05     : 1xK double - lower 5 percent confidence bound on p(correct)
+%       p95     : 1xK double - upper 95 percent confidence bound on p(correct)
+%       pmid    : 1xK double - median p(correct)
+%       pmode   : 1xK double - mode of the p(correct) density
+%       pmatrix : Kx1 double - CDF column at p = background_prob (certainty that
+%                 performance exceeds chance), one entry per trial
+%
+%   Notes:
+%       The probability density fp{k|j} (equation B.3 in Smith et al. 2004) is
+%       obtained by a change of variables from the Gaussian state density
+%       through the logit link with offset mu; integration uses cumtrapz on a
+%       grid of step size 1e-4.
+%
+%   See also: binpdistn, xdistn, rdistn
+%
+%   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
+%        Source: https://github.com/preraulab/labcode_main
 
 pmatrix = [];
 
  dels=1e-4;
  pr  = dels:dels:1-dels;
 % pr=linspace(0,1,100);
- 
+
 for ov = 1:size(x,2)
 
  xx = x(ov);
@@ -39,8 +44,8 @@ for ov = 1:size(x,2)
  term2 = exp(-1/(2*ss) * (log (pr./((1-pr)*exp(mu))) - xx).^2);
  pdf = term1 .* term2;
  pdf = dels * pdf;
- 
- 
+
+
 % Integrate the pdf
  sumpdf = cumtrapz(pdf);
 % sumpdf = cumsum(pdf);
@@ -77,10 +82,10 @@ end
  pmid(ov)  = pr(middlimit(1));
  [y,i]     = max(pdf);
  pmode(ov) = pr(i);
- 
+
 
  pmatrix =[pmatrix; sumpdf];
- 
+
 end
 
 inte = fix(background_prob/dels);

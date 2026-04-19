@@ -1,21 +1,30 @@
-function [indices, values] = weighted_random_index(data, num_samples, weights)
-
-%WEIGHTED_RANDOM_INDEX Returns indices of data resampled based on weights
+%WEIGHTED_RANDOM_INDEX  Resample indices of a data vector with replacement using given weights
 %
 %   Usage:
-%   [indices, values] = weighted_random_index(data, num_samples, weights)
+%       [indices, values] = weighted_random_index(data, num_samples)
+%       [indices, values] = weighted_random_index(data, num_samples, weights)
 %
-%   Input:
-%   data: 1xN vector of values
-%   num_samples: Number of samples to estimate
-%   weights: 1xN vector of weights
+%   Inputs:
+%       data        : 1xN double - values to sample from -- required
+%       num_samples : integer - number of samples to draw -- required
+%       weights     : 1xN double - non-negative weights (default: uniform ones)
 %
-%   Example:
+%   Outputs:
+%       indices : num_samples x 1 integer - sampled indices into data
+%       values  : num_samples x 1 double - data(indices)
 %
-%   Copyright 2024 Michael J. Prerau, Ph.D. (based on randsamp)
+%   Notes:
+%       Weights are normalized internally. Based on the RANDSAMPLE
+%       implementation but returns indices explicitly. Uses histc() on
+%       cumulative edges for the weighted draw.
 %
-%   Last modified 10/01/2015
-%********************************************************************
+%   See also: randsampleind, histc
+%
+%   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
+%        Source: https://github.com/preraulab/labcode_main
+
+function [indices, values] = weighted_random_index(data, num_samples, weights)
+
 if nargin <3
     weights=ones(1,length(data));
 end

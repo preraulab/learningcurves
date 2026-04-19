@@ -1,20 +1,33 @@
 function [newsigsq] = em_bino(I, xnew, signewsq, A, startflag);
-%em_bino is a helper function that computes sigma_eps squared (estimated 
-%learning process variance).  
+%EM_BINO  EM update of state-process variance for the binary learning model
 %
-%variables:
-%   xnew         x{k|K}, backward estimate of learning state
-%   signewsq     SIG^2{k|K}, backward estimate of learning state variance  
-%   A            A{k}
-%   M            total number of backward estimates (K + 1)
-%   covcalc      covariance estimate (equation A.13)*
-%   term1        W{k|K}       (equation A.15)*
-%   term2        W{k,k-1|K}   (equation A.14)*
-%   term3        derived from W{1|K}     (applies equation A.15)* 
-%   term4        W{K|K}     (applies equation A.15)*
-%   newsigsq     SIG_EPSILON^2, estimate of learning state variance from EM (equation A.16)*
+%   Usage:
+%       newsigsq = em_bino(I, xnew, signewsq, A, startflag)
+%
+%   Inputs:
+%       I         : 2xK double - row1: number correct per trial; row2: max possible -- required
+%       xnew      : 1xK+1 double - smoothed state estimate x{k|K} -- required
+%       signewsq  : 1xK+1 double - smoothed state variance SIG^2{k|K} -- required
+%       A         : 1xK+1 double - smoother gain A{k} -- required
+%       startflag : integer - initial-condition rule (0, 1, 2) -- required
+%
+%   Outputs:
+%       newsigsq : double - EM estimate of learning-state process variance SIG_EPSILON^2
+%
+%   Notes:
+%       Computes sufficient statistics W{k|K}, W{k,k-1|K} (equations A.13-A.15)
+%       and applies equation A.16 from Smith et al., J Neurosci 2004. The
+%       initial-condition terms (term3, term4) depend on startflag:
+%         0 -> fixed initial condition at zero
+%         1 -> partial update (1.5 * x(2)^2)
+%         2 -> estimated initial condition (x(0) = x(1))
+%
+%   See also: binsmoother, backwardfilter, m_step
+%
+%   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
+%        Source: https://github.com/preraulab/labcode_main
 
-M           = size(xnew,2);  
+M           = size(xnew,2);
 
 xnewt      = xnew(3:M);
 xnewtm1    = xnew(2:M-1);
@@ -27,7 +40,7 @@ term1      = sum(xnewt.^2) + sum(signewsqt);
 term2      = sum(covcalc) + sum(xnewt.*xnewtm1);
 
 if startflag == 1
- term3      = 1.5*xnew(2)*xnew(2) + 2.0*signewsq(2); 
+ term3      = 1.5*xnew(2)*xnew(2) + 2.0*signewsq(2);
  term4      = xnew(end)^2 + signewsq(end);
 elseif( startflag == 0)
  term3      = 2*xnew(2)*xnew(2) + 2*signewsq(2);

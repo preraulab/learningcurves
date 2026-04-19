@@ -1,18 +1,27 @@
 function [xnew, signewsq, A] = backwardfilter(x, xold, sigsq, sigsqold);
-%backwardfilter is a helper function that implements the backward filter
-%smoothing algorithm to estimate the learning state at trial k, given all
-%the data, as the Gaussian random variable with mean x{k|K} (xnew) and
-%SIG^2{k|K} (signewsq).  
-% 
-%variables:
-%   x            x{k|k}, posterior mode 
-%   xold         x{k|k-1}, one-step prediction
-%   sigsq        SIG^2{k|k}, posterior variance
-%   sigsqold     SIG^2{k|k-1}, one-step prediction variance
-%   A(i)         A{k}, (equation A.11)*
-%   xnew         x{k|K}, backward estimate of learning state given all the data (equation A.10)*
-%   signewsq     SIG^2{k|K}, backward estimate of learning state variance (equation A.12)*
-%   T            total number of posterior mode estimates (K + 1)
+%BACKWARDFILTER  Backward (RTS) smoother for the binary learning-state model
+%
+%   Usage:
+%       [xnew, signewsq, A] = backwardfilter(x, xold, sigsq, sigsqold)
+%
+%   Inputs:
+%       x        : 1xT double - posterior mode x{k|k} -- required
+%       xold     : 1xT double - one-step prediction x{k|k-1} -- required
+%       sigsq    : 1xT double - posterior variance SIG^2{k|k} -- required
+%       sigsqold : 1xT double - one-step prediction variance SIG^2{k|k-1} -- required
+%
+%   Outputs:
+%       xnew     : 1xT double - backward estimate of learning state x{k|K} (equation A.10)
+%       signewsq : 1xT double - backward estimate of state variance SIG^2{k|K} (equation A.12)
+%       A        : 1xT double - smoother gain A{k} = sigsq(k)/sigsqold(k+1) (equation A.11)
+%
+%   Notes:
+%       Equation references follow Smith et al., J Neurosci 2004 (Appendix A).
+%
+%   See also: forwardfilter, em_bino, binsmoother
+%
+%   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
+%        Source: https://github.com/preraulab/labcode_main
 
 T = size(x,2);
 

@@ -1,3 +1,21 @@
+%BINPLOT  Stem plot of binary correct/incorrect trials with colored up/down markers
+%
+%   Usage:
+%       binplot(N)
+%       binplot(times, N)
+%
+%   Inputs:
+%       times : 1xT double - trial times (default: 1:length(N))
+%       N     : 1xT logical/double - 1 = correct, 0 = incorrect -- required
+%
+%   Outputs:
+%       none (side effects only — plots into the current axes)
+%
+%   See also: stem, learningcurve_pfilter
+%
+%   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
+%        Source: https://github.com/preraulab/labcode_main
+
 function binplot(varargin)
 
 if nargin==1

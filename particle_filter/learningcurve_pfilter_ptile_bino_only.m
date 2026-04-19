@@ -1,62 +1,33 @@
-%LEARNINGCURVE_PFILTER_PTILE Computes binary, continuous, or mixed
-%learning curve using a particle filter DOESN'T SAVE PARTICLES ONLY
-%PERCENTILES. This can be used for cases in which the number of particles
-%must be very large.
-%
-%   State model: x_t=x_t-1+Ex, where Ex ~ N(0, sig2x)
-%   Binary obs. model: p_t=exp(x_t)/(1+exp(x_t))
-%   Cont obs. model: z_t=alpha + beta * x_t + Ez, where Ez ~ N(0, sig2z)0
+%LEARNINGCURVE_PFILTER_PTILE_BINO_ONLY  Binary-only learning-curve particle filter storing only percentiles
 %
 %   Usage:
-%   [param_ests, particles]=learningcurve_pfilter() -- RUNS EXAMPLE
-%   [param_ests, particles]=learningcurve_pfilter(times, data)
-%   [param_ests, particles]=learningcurve_pfilter(times, data, num_particles, smoother, prog_bar, plot_on)
+%       [param_ests, particles] = learningcurve_pfilter_ptile_bino_only()
+%       [param_ests, particles] = learningcurve_pfilter_ptile_bino_only(times, data)
+%       [param_ests, particles] = learningcurve_pfilter_ptile_bino_only(times, data, num_particles, smoother, prog_bar, plot_on)
 %
-%   Input:
-%   times: 1xT vector of corresponding times (in seconds)
-%   data: A 2xT matrix of binary (1st row) and continuous (2nd row) observations. Set either row to NaN for just the binary or continuous filter, or use NaN for missing data.
-%   num_particles: Number of particles to use (Default: 5000)
-%   smoother: 1 = Use forward/backward filtering, 0 = Filter only (Default: 1)
-%   progbar: 1 = Display progress bar, 0 = No progress bar (Default: 1);
-%   plot on: 1 = Plot output graph, 0 = No output plot (Default: 1);
+%   Inputs:
+%       times         : 1xT double - observation times in seconds -- required
+%       data          : 1xT logical/double - binary observations (NaN for missing) -- required
+%       num_particles : integer - number of particles (default: 5000)
+%       smoother      : logical - forward/backward filtering if true (default: true)
+%       prog_bar      : logical - display progress bar (default: true)
+%       plot_on       : logical - plot output graph (default: true)
 %
-%   Example:
+%   Outputs:
+%       param_ests : struct - estimated parameters and posterior summaries
+%       particles  : struct - percentile summaries (not full particles)
 %
-%     %---------------------------------------------
-%     %RUN WITH NO INPUTS TO EXECUTE THIS EXAMPLE
-%     %---------------------------------------------
+%   Notes:
+%       Binary-only sibling of learningcurve_pfilter_ptile. Saves only
+%       percentiles so it scales to very large particle counts. Model:
+%           State : x_t = x_{t-1} + Ex, Ex ~ N(0, sig2x)
+%           Binary: p_t = exp(x_t)/(1+exp(x_t))
+%       Calling with no inputs runs a built-in demo.
 %
-%     %Set up times
-%     times=1:300;
+%   See also: learningcurve_pfilter_ptile, binary_learningcurve_pfilter_ptile
 %
-%     %Start with a high probability of success
-%     x=zeros(size(times));
-%     x(1)=log(9999);
-%
-%     %Create a random walk
-%     for i=2:length(times)
-%         x(i)=x(i-1)-.1+randn*.05;
-%     end
-%
-%     %Compute binary responses
-%     pk=exp(x)./(1+exp(x));
-%     N=rand(1,length(x))<=pk;
-%
-%     %Compute continous responses
-%     a=1;
-%     b=.3;
-%     Z=a+b.*x+randn(1,length(x))*.5;
-%
-%     %Create simulated data
-%     data=[N;Z];
-%
-%     %Compute smoother
-%     learningcurve_pfilter(times, data);
-%
-%   Copyright 2024 Michael J. Prerau, Ph.D.
-%
-%   Last modified 1/07/2013
-%********************************************************************
+%   ∿∿∿  Prerau Laboratory MATLAB Codebase · sleepEEG.org  ∿∿∿
+%        Source: https://github.com/preraulab/labcode_main
 
 function [param_ests, particles]=learningcurve_pfilter_ptile(times, data, num_particles, smoother, prog_bar, plot_on)
 %Generate simulated data if no inputs
